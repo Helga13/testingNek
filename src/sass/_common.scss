@@ -1,0 +1,375 @@
+/* --- general styles --- */
+
+*, 
+*:after, 
+*:before {
+    box-sizing: border-box; 
+	padding: 0;
+	margin: 0;
+}
+
+*:focus{
+	outline: none;
+}
+
+p{
+	color: $bgMainColor;
+	margin-bottom: 10px;
+}
+
+i{
+	font-style: normal;
+}
+
+li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+
+html {
+    font-size: 62.5%; /* Sets up the Base 10 stuff 100%/1.6 */
+	height: 100%;
+}
+
+body {
+    background-color: $bgBody;
+    height: 100%;
+    width: 100%;
+    color: $mainTextColor;
+	font-family: 'AFuturica', $font-stack-helvetica;
+	@include font-size(1.6);
+	font-smoothing: antialiased;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+}
+
+.wrap{
+	max-width: 1400px;
+	padding: 0 20px;
+	margin: 0 auto;
+}
+
+header,
+footer{
+	background-color: $bgMainColor;
+}
+
+footer{
+	padding: 20px 0;
+	text-align: right;
+	height: 60px;
+}
+
+.menu__nav{
+	text-align: center;
+	display: table;
+	table-layout: fixed;
+    width: 100%;
+	position: relative;
+	li {
+		display: table-cell;
+		background: $bgSecondaryColorLight;
+		vertical-align: middle;
+		cursor: pointer;
+		transition: background 0.25s ease;
+		a{
+			@include font-size(1.8);
+			color: $mainTextColor;
+			text-decoration: none;
+			display: block;
+			padding: 5px 20px;
+			transition: color 0.25s ease;
+		}
+		&:hover {
+			background: $bgMainColor;
+			a{
+				color: $bgSecondaryColorLight;
+			}
+		}
+	}
+	& > li:not(:last-child){
+		border-right: 1px solid $bgMainColor;
+	}
+}
+
+.menu__nav > li:hover .menu__nav__sub{
+	left: 0;
+	top: 50px;
+	opacity: 1;
+	width: 100%;
+}
+
+.menu__nav__sub{
+	position: absolute;
+    left: -9999px; 
+	text-align: left;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+	li{
+		display: block;
+		white-space: nowrap;
+		padding: 0;
+		a{
+			width: 100%;
+			background: $bgMainColor;
+			transition: background 0.25s ease;
+			&:hover{
+				background: $bgSecondaryColorLight;
+				color: $mainTextColor;
+			}
+		}
+	}
+}
+
+.icon_drop{
+	font-family: 'Glyphicons Halflings';
+	@include font-size(0.8);
+	padding-left: 8px;
+}
+
+.wrap{
+	@include clearfix;
+}
+
+.block1{
+	background: url('../img/block1.jpg') center no-repeat;
+	background-size: cover;
+}
+
+.block2{
+	background: url('../img/block2.jpg') center no-repeat;
+	background-size: cover;
+}
+
+.block1,
+.block2{
+	padding: 30px 0;
+}
+
+.img_block{
+	width: 30%;
+	height: 250px;
+	float: left;
+	overflow: hidden;
+	img{
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.text{
+	width: 70%;
+	padding: 0 0 0 20px;
+	overflow: hidden;
+	@include line-height(2.0);
+}
+
+.block2{
+	.img_block{
+		float: right;
+	}
+	.text{
+		float: left;
+		padding: 0 20px 0 0;
+	}
+}
+
+.button_block{
+	background-color: $mainTextColor;
+	padding: 20px 0;
+	.wrap{
+		border: 5px solid $bgMainColor;
+		padding: 0;
+	}
+}
+
+.button,
+button{
+	display: block;
+	text-align: center;
+	padding: 20px;
+	width: 50%;
+	margin: 20px auto;
+	background-color: $bgMainColor;
+	color: $mainTextColor;
+	@include font-size(2.0);
+	letter-spacing: 0.1em;
+	border: none;
+	cursor: pointer;
+	transform: translateZ(0);
+	transition: opacity 0.25s ease;
+	&:hover{
+		opacity: 0.8;
+	}
+}
+
+.button_color_light{
+	background-color: $bgSecondaryColorLight;
+}
+
+.contact_form{
+	width: 70%;
+	margin: 20px auto;
+	border: 5px solid $bgMainColor;
+	padding: 20px;
+}
+
+.form-title{
+	text-align: center;
+	margin-bottom: 20px;
+	@include font-size(2.6);
+}
+
+.field {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+label{
+	@include font-size(1.4);
+	color: $bgMainColor;
+}
+
+input:not(.button),
+textarea{
+    margin-top: 5px;
+    outline: 0;
+    height: 40px;
+    border: 1px solid $bgSecondaryColorLight;
+    padding: 5px 15px;
+	@include font-size(1.6);
+	@include line-height(1.6);
+	width: 100%;
+	color: $bgMainColor;
+}
+
+textarea{
+	resize: vertical;
+}
+
+.choose{
+	.field{
+		position: relative;
+		margin-bottom: 5px;
+	}
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+    position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	z-index: -1;
+	width: auto;
+	height: auto;
+	margin: 0;
+}
+
+input[type="radio"]+label,
+input[type="checkbox"]+label{
+	display: inline-block;
+	width: auto;
+	margin: 0;
+	height: 30px;
+	cursor: pointer;
+	@include line-height(3.0);
+}
+
+input[type="radio"]+label i,
+input[type="checkbox"]+label i{
+    position: relative;
+    top: -2px;
+	display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    background: 0 0;
+    border: 1px solid $bgSecondaryColorLight;
+    border-radius: 50%;
+    outline-offset: 5px;
+    transition: border .25s ease;
+}
+
+input[type="checkbox"]+label i{
+	border-radius: 0;
+}
+
+input[type="radio"]+label:hover i,
+input[type="checkbox"]+label:hover i{
+    border: 1px solid $bgMainColor;
+}
+
+input[type="radio"]:checked+label i::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    background: $bgMainColor;
+}
+
+input[type="checkbox"]:checked+label i::after{
+	content: '\e013';
+	font-family: 'Glyphicons Halflings';
+	@include font-size(1.6);
+    position: absolute;
+    top: -11px;
+    left: 0px;
+    color: $bgMainColor;
+}
+
+.figures{
+	height: 200px;
+}
+
+.arrow {
+  position: relative;
+  margin: 20px auto;
+  width: 200px;
+  height: 5px;
+  background: $bgMainColor;
+  }
+
+  .arrow:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 40px solid transparent; 
+    border-right: 0;
+	top: -12px;
+    right: -21px;
+    border-left-color: $bgMainColor;  
+    border-width: 15px 0 15px 21px;
+    }
+
+
+.fig_double{
+	margin: 20px auto;
+}
+
+.fig {
+  	width: 0;
+  	height: 0;
+  	margin: 0 auto;
+  	border-style: solid; 
+  	border-color: transparent $bgMainColor transparent $bgMainColor;
+	border-width: 16px 20px 16px 20px;
+  }
+
+.round{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: $bgMainColor;
+	margin: 20px auto;
+}

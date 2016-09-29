@@ -1,0 +1,42 @@
+@media only screen and (max-width : 767px) {
+
+	.menu__nav{
+		display: block;
+		text-align: left;
+		& > li{
+			display: block;
+		}
+		& > li:not(:last-child){
+			border: none;
+			border-bottom: 1px solid #1d242e;
+		}
+	}
+	
+	.menu__nav__sub,
+	.menu__nav>li:hover .menu__nav__sub{
+		position: relative;
+		opacity: 1;
+		left: auto;
+		top: auto;
+	}
+	
+	.menu__nav__sub li a{
+		padding-left: 30px;
+	}
+	
+ 	.img_block,
+	.text{
+		width: 100%;
+		float: none;
+		margin-bottom: 20px;
+	}
+	
+	.text{
+		padding: 0;
+	}
+	
+	.contact_form button{
+		width: 100%;
+	}
+	
+}
